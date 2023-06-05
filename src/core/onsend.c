@@ -50,6 +50,11 @@ int run_onsend(sip_msg_t* orig_msg, dest_info_t* dst, char* buf, int len)
 		LM_DBG("required parameters are not available - ignoring\n");
 		return 1;
 	}
+
+
+	LM_INFO("run_onsend() function called.\n");
+	LM_INFO("Original message: %s\n", orig_msg);
+
 	ret=1;
 	// do if onsend_route{} or cfgengine exists
 	if(kemi_onsend_route_callback.len>0) {
@@ -128,6 +133,9 @@ int run_onsend_evroute(onsend_info_t *sndinfo, int evrt, str *evcb, str *evname)
 	if (evrt<0 && keng==NULL) {
 		return 1;
 	}
+
+	LM_INFO("run_onsend_evroute() function called.\n");
+	LM_INFO("Original message: %s\n", sndinfo->msg);
 
 	p_onsend = sndinfo;
 	backup_route_type=get_route_type();
